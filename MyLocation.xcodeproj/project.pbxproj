@@ -14,6 +14,10 @@
 		C45B6F061A5A646A0056C182 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C45B6F051A5A646A0056C182 /* Images.xcassets */; };
 		C45B6F091A5A646A0056C182 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C45B6F071A5A646A0056C182 /* LaunchScreen.xib */; };
 		C45B6F151A5A646A0056C182 /* MyLocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45B6F141A5A646A0056C182 /* MyLocationTests.swift */; };
+		C472D1961A5B8CA100D0A182 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472D1951A5B8CA100D0A182 /* LocationDetailsViewController.swift */; };
+		C472D1981A5BBDD500D0A182 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472D1971A5BBDD500D0A182 /* CategoryPickerViewController.swift */; };
+		C472D19A1A5C0A5600D0A182 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472D1991A5C0A5600D0A182 /* HudView.swift */; };
+		C472D19C1A5CDAC300D0A182 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472D19B1A5CDAC300D0A182 /* Functions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,10 @@
 		C45B6F0E1A5A646A0056C182 /* MyLocationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyLocationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C45B6F131A5A646A0056C182 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C45B6F141A5A646A0056C182 /* MyLocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationTests.swift; sourceTree = "<group>"; };
+		C472D1951A5B8CA100D0A182 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationDetailsViewController.swift; path = ../LocationDetailsViewController.swift; sourceTree = "<group>"; };
+		C472D1971A5BBDD500D0A182 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
+		C472D1991A5C0A5600D0A182 /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
+		C472D19B1A5CDAC300D0A182 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +87,10 @@
 		C45B6EF91A5A646A0056C182 /* MyLocation */ = {
 			isa = PBXGroup;
 			children = (
+				C472D1951A5B8CA100D0A182 /* LocationDetailsViewController.swift */,
+				C472D19B1A5CDAC300D0A182 /* Functions.swift */,
+				C472D1991A5C0A5600D0A182 /* HudView.swift */,
+				C472D1971A5BBDD500D0A182 /* CategoryPickerViewController.swift */,
 				C45B6EFC1A5A646A0056C182 /* AppDelegate.swift */,
 				C45B6EFE1A5A646A0056C182 /* CurLocationViewController.swift */,
 				C45B6F001A5A646A0056C182 /* SecondViewController.swift */,
@@ -215,8 +227,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C472D1961A5B8CA100D0A182 /* LocationDetailsViewController.swift in Sources */,
 				C45B6F011A5A646A0056C182 /* SecondViewController.swift in Sources */,
+				C472D19A1A5C0A5600D0A182 /* HudView.swift in Sources */,
+				C472D19C1A5CDAC300D0A182 /* Functions.swift in Sources */,
 				C45B6EFD1A5A646A0056C182 /* AppDelegate.swift in Sources */,
+				C472D1981A5BBDD500D0A182 /* CategoryPickerViewController.swift in Sources */,
 				C45B6EFF1A5A646A0056C182 /* CurLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +425,7 @@
 				C45B6F1A1A5A646A0056C182 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C45B6F1B1A5A646A0056C182 /* Build configuration list for PBXNativeTarget "MyLocationTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +434,7 @@
 				C45B6F1D1A5A646A0056C182 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

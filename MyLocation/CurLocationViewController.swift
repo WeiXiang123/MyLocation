@@ -155,6 +155,15 @@ class CurLocationViewController: UIViewController,CLLocationManagerDelegate {
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "TagLocation" {
+            let navigate = segue.destinationViewController as UINavigationController
+            let viewController = navigate.topViewController as LocationDetailsViewController
+            viewController.coordinate = location!.coordinate
+            viewController.placemark = placemark
+        }
+    }
+    
     func showLocationServicesDeniedAlert() {
         let alertController = UIAlertController(title: "Location Services Disabled", message: "Please enable location services for this app in Settings.", preferredStyle: UIAlertControllerStyle.Alert)
         
