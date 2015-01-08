@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import CoreData
 
 class CurLocationViewController: UIViewController,CLLocationManagerDelegate {
 
@@ -33,6 +34,9 @@ class CurLocationViewController: UIViewController,CLLocationManagerDelegate {
     
     //limit time for search 
     var timer:NSTimer?
+    
+    //coredata
+    var managedObjectContext: NSManagedObjectContext!
     
     @IBAction func getLocation() {
         let authStatus:CLAuthorizationStatus = CLLocationManager.authorizationStatus()
@@ -161,6 +165,7 @@ class CurLocationViewController: UIViewController,CLLocationManagerDelegate {
             let viewController = navigate.topViewController as LocationDetailsViewController
             viewController.coordinate = location!.coordinate
             viewController.placemark = placemark
+            viewController.managedObjectContext = managedObjectContext
         }
     }
     

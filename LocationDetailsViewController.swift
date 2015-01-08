@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import CoreData
 
 extension LocationDetailsViewController: CategoryPickerDelegate {
     
@@ -55,21 +56,41 @@ class LocationDetailsViewController: UITableViewController {
     var descriptionText = ""
     var categoryName = "No Category"
     
+    var managedObjectContext: NSManagedObjectContext!       //coredata
+    var date = NSDate()                                     //store cur date
+    
     @IBAction func done() {
         
        // println("Description is \(descriptionText)")
         let hudView = HudView.hudView(navigationController!.view, animated: true)
         hudView.text = "taggled"
         
+        //insert data to core data. "Location" is the entity that named in the DataModel
+        let location = NSEntityDescription.insertNewObjectForEntityForName("Location", inManagedObjectContext: managedObjectContext) as Location
+        location.locationDescription = descriptionText
+        location.category = categoryName
+        location.latitude = coordinate.latitude
+        location.longitude = coordinate.longitude
+        location.date = date
+        location.placemark = placemark
+        var error:NSError?
+        if !managedObjectContext.save(&error) {
+            fatalCoreDataError(error)
+            return
+        }
+        
+        //animate
         afterDelay(0.6) {
             self.dismissViewControllerAnimated(true, completion: nil)
             }
     }
     
+    
     @IBAction func cancel() {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +107,7 @@ class LocationDetailsViewController: UITableViewController {
             addressLabel.text = "No Address Found"
         }
         
-        dateLabel.text = formatDate(NSDate())
+        dateLabel.text = formatDate(date)
         
         //touch others to hide the keyboard
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("hideKeyboard:"))
