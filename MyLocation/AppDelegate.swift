@@ -61,12 +61,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
         
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
+                        
         //pass the coredata to next
         let rootController = window!.rootViewController as UITabBarController
         if let viewControllers = rootController.viewControllers {
         
             let viewController = viewControllers[0] as CurLocationViewController
             viewController.managedObjectContext = managedObjectContext
+            let forceTheViewToLoad = viewController.view
+            
+            let navigateController = viewControllers[1] as UINavigationController
+            let locationsController = navigateController.viewControllers[0] as LocationsViewController
+            locationsController.managedObjectContext = managedObjectContext
         }
                         
         listenFatalCoreDataNotification()

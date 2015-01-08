@@ -20,6 +20,8 @@
 		C472D19C1A5CDAC300D0A182 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472D19B1A5CDAC300D0A182 /* Functions.swift */; };
 		C472D19F1A5CEE1D00D0A182 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C472D19D1A5CEE1D00D0A182 /* DataModel.xcdatamodeld */; };
 		C472D1A11A5D0F4D00D0A182 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472D1A01A5D0F4D00D0A182 /* Location.swift */; };
+		C472D1A31A5E18AC00D0A182 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472D1A21A5E18AC00D0A182 /* LocationsViewController.swift */; };
+		C472D1A51A5E2CCD00D0A182 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472D1A41A5E2CCD00D0A182 /* LocationCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		C472D19B1A5CDAC300D0A182 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		C472D19E1A5CEE1D00D0A182 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		C472D1A01A5D0F4D00D0A182 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		C472D1A21A5E18AC00D0A182 /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
+		C472D1A41A5E2CCD00D0A182 /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,18 +95,20 @@
 		C45B6EF91A5A646A0056C182 /* MyLocation */ = {
 			isa = PBXGroup;
 			children = (
-				C472D1951A5B8CA100D0A182 /* LocationDetailsViewController.swift */,
+				C45B6EFC1A5A646A0056C182 /* AppDelegate.swift */,
+				C472D1971A5BBDD500D0A182 /* CategoryPickerViewController.swift */,
+				C45B6EFE1A5A646A0056C182 /* CurLocationViewController.swift */,
+				C472D19D1A5CEE1D00D0A182 /* DataModel.xcdatamodeld */,
 				C472D19B1A5CDAC300D0A182 /* Functions.swift */,
 				C472D1991A5C0A5600D0A182 /* HudView.swift */,
-				C472D1971A5BBDD500D0A182 /* CategoryPickerViewController.swift */,
-				C45B6EFC1A5A646A0056C182 /* AppDelegate.swift */,
-				C45B6EFE1A5A646A0056C182 /* CurLocationViewController.swift */,
-				C45B6F001A5A646A0056C182 /* SecondViewController.swift */,
-				C45B6F021A5A646A0056C182 /* Main.storyboard */,
 				C45B6F051A5A646A0056C182 /* Images.xcassets */,
 				C45B6F071A5A646A0056C182 /* LaunchScreen.xib */,
-				C472D19D1A5CEE1D00D0A182 /* DataModel.xcdatamodeld */,
 				C472D1A01A5D0F4D00D0A182 /* Location.swift */,
+				C472D1951A5B8CA100D0A182 /* LocationDetailsViewController.swift */,
+				C472D1A21A5E18AC00D0A182 /* LocationsViewController.swift */,
+				C472D1A41A5E2CCD00D0A182 /* LocationCell.swift */,
+				C45B6F021A5A646A0056C182 /* Main.storyboard */,
+				C45B6F001A5A646A0056C182 /* SecondViewController.swift */,
 				C45B6EFA1A5A646A0056C182 /* Supporting Files */,
 			);
 			path = MyLocation;
@@ -234,10 +240,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C472D1961A5B8CA100D0A182 /* LocationDetailsViewController.swift in Sources */,
+				C472D1A31A5E18AC00D0A182 /* LocationsViewController.swift in Sources */,
 				C472D19F1A5CEE1D00D0A182 /* DataModel.xcdatamodeld in Sources */,
 				C45B6F011A5A646A0056C182 /* SecondViewController.swift in Sources */,
 				C472D19A1A5C0A5600D0A182 /* HudView.swift in Sources */,
 				C472D19C1A5CDAC300D0A182 /* Functions.swift in Sources */,
+				C472D1A51A5E2CCD00D0A182 /* LocationCell.swift in Sources */,
 				C472D1A11A5D0F4D00D0A182 /* Location.swift in Sources */,
 				C45B6EFD1A5A646A0056C182 /* AppDelegate.swift in Sources */,
 				C472D1981A5BBDD500D0A182 /* CategoryPickerViewController.swift in Sources */,

@@ -59,20 +59,42 @@ class LocationDetailsViewController: UITableViewController {
     var managedObjectContext: NSManagedObjectContext!       //coredata
     var date = NSDate()                                     //store cur date
     
+    //determine "Tag" or "Edit" mode
+    var locationToEdit:Location?{
+        didSet{
+        if let location = locationToEdit {
+            descriptionText = location.locationDescription
+            categoryName = location.category
+            date = location.date
+            coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+            placemark = location.placemark
+        }
+        }
+    }
+    
+    
     @IBAction func done() {
         
        // println("Description is \(descriptionText)")
         let hudView = HudView.hudView(navigationController!.view, animated: true)
-        hudView.text = "taggled"
+        var location:Location
         
-        //insert data to core data. "Location" is the entity that named in the DataModel
-        let location = NSEntityDescription.insertNewObjectForEntityForName("Location", inManagedObjectContext: managedObjectContext) as Location
+        if let tmp = locationToEdit {
+            hudView.text = "Update"
+            location = tmp
+        }else {
+            //insert data to core data. "Location" is the entity that named in the DataModel
+            location = NSEntityDescription.insertNewObjectForEntityForName("Location", inManagedObjectContext: managedObjectContext) as Location
+            hudView.text = "taggled"
+        }
+        
         location.locationDescription = descriptionText
         location.category = categoryName
         location.latitude = coordinate.latitude
         location.longitude = coordinate.longitude
         location.date = date
         location.placemark = placemark
+        
         var error:NSError?
         if !managedObjectContext.save(&error) {
             fatalCoreDataError(error)
@@ -94,7 +116,11 @@ class LocationDetailsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
+        if let locationEdit = locationToEdit {
+            title = "Edit Location"
+        }
+    
         descriptionTextView.text = descriptionText
         categoryLabel.text = categoryName
     
@@ -149,6 +175,7 @@ class LocationDetailsViewController: UITableViewController {
         if indexPath.section == 0 && indexPath.row == 0 {
             descriptionTextView.becomeFirstResponder()
         }
+        println("select\(indexPath.row)")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -158,6 +185,7 @@ class LocationDetailsViewController: UITableViewController {
             viewController.delegate = self
             
         }
+        println("------prepareForSegue;\(categoryName)")
     }
     
     private func stringFromPlacemark(placemark: CLPlacemark) -> String {
