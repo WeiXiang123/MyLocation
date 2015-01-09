@@ -135,6 +135,7 @@ class LocationDetailsViewController: UITableViewController {
         
         dateLabel.text = formatDate(date)
         
+        
         //touch others to hide the keyboard
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("hideKeyboard:"))
         gestureRecognizer.cancelsTouchesInView = false
@@ -198,11 +199,11 @@ class LocationDetailsViewController: UITableViewController {
             return dateFormatter.stringFromDate(date)
     }
     
-    private func hideKeyboard(gestureRecognizer:UIGestureRecognizer) {
+    func hideKeyboard(gestureRecognizer:UIGestureRecognizer) {
         let point = gestureRecognizer.locationInView(tableView)
         let indexPath = tableView.indexPathForRowAtPoint(point)
         
-        if indexPath != nil && indexPath!.section != 0 && indexPath!.row != 0 {
+        if indexPath != nil && indexPath!.section == 0 && indexPath!.row == 0 {
             return
         }
         

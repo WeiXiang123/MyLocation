@@ -69,11 +69,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
             let viewController = viewControllers[0] as CurLocationViewController
             viewController.managedObjectContext = managedObjectContext
-            let forceTheViewToLoad = viewController.view
+            //let forceTheViewToLoad = viewController.view
             
             let navigateController = viewControllers[1] as UINavigationController
             let locationsController = navigateController.viewControllers[0] as LocationsViewController
             locationsController.managedObjectContext = managedObjectContext
+            
+            let mapViewController = viewControllers[2] as MapViewController
+            mapViewController.managedObjectContext = managedObjectContext
         }
                         
         listenFatalCoreDataNotification()

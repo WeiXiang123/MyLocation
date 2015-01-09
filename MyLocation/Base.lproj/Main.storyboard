@@ -90,7 +90,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="628" y="-449"/>
+            <point key="canvasLocation" x="500" y="-817"/>
         </scene>
         <!--Tag Location-->
         <scene sceneID="Uds-hq-riG">
@@ -330,11 +330,12 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="oUq-9m-3VA" kind="relationship" relationship="viewControllers" id="cbj-J7-iqh"/>
+                        <segue destination="FdC-1Y-OEA" kind="relationship" relationship="viewControllers" id="PhP-Nc-FF1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-42" y="-83"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Cko-AS-kqD">
@@ -400,7 +401,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SbB-gy-O1q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="854" y="359"/>
+            <point key="canvasLocation" x="870" y="-99"/>
         </scene>
         <!--Locations-->
         <scene sceneID="DKo-Oi-X92">
@@ -417,7 +418,53 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0n-mL-Ibu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="427" y="359"/>
+            <point key="canvasLocation" x="461" y="-83"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="QRe-lf-d9i">
+            <objects>
+                <viewController id="FdC-1Y-OEA" customClass="MapViewController" customModule="MyLocation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y0e-aD-3R3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="eKN-57-ZDh">
+                                <rect key="frame" x="0.0" y="-30" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="FdC-1Y-OEA" id="rpU-8v-KiB"/>
+                                </connections>
+                            </mapView>
+                            <navigationBar contentMode="scaleToFill" id="Ah1-Hy-oDl">
+                                <rect key="frame" x="0.0" y="16" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Map" id="neL-pQ-w0U">
+                                        <barButtonItem key="leftBarButtonItem" title="Location" id="mjE-A9-Zwh">
+                                            <connections>
+                                                <action selector="showLocations" destination="FdC-1Y-OEA" id="ZvF-wA-zBi"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="User" id="lLb-7g-HwF">
+                                            <connections>
+                                                <action selector="showUser:" destination="FdC-1Y-OEA" id="UJ9-v6-54I"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" id="O6Q-jn-OIH"/>
+                    <connections>
+                        <outlet property="mapView" destination="eKN-57-ZDh" id="i3J-cL-5MB"/>
+                        <segue destination="z1Q-1B-paD" kind="modal" identifier="EditLocation" id="iZ3-Pd-Iat"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="boU-lX-nUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="792" y="632"/>
         </scene>
     </scenes>
     <resources>
@@ -429,6 +476,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="KA3-RO-yUk"/>
+        <segue reference="iZ3-Pd-Iat"/>
     </inferredMetricsTieBreakers>
 </document>
