@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C45B16CA1A60C5F500B52CEA /* UIimage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45B16C91A60C5F500B52CEA /* UIimage+Resize.swift */; };
 		C45B6EFD1A5A646A0056C182 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45B6EFC1A5A646A0056C182 /* AppDelegate.swift */; };
 		C45B6EFF1A5A646A0056C182 /* CurLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45B6EFE1A5A646A0056C182 /* CurLocationViewController.swift */; };
 		C45B6F011A5A646A0056C182 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45B6F001A5A646A0056C182 /* SecondViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C45B16C91A60C5F500B52CEA /* UIimage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIimage+Resize.swift"; sourceTree = "<group>"; };
 		C45B6EF71A5A64690056C182 /* MyLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C45B6EFB1A5A646A0056C182 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C45B6EFC1A5A646A0056C182 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				C472D1AA1A5F5B5E00D0A182 /* MapViewController.swift */,
 				C45B6F001A5A646A0056C182 /* SecondViewController.swift */,
 				C45B6EFA1A5A646A0056C182 /* Supporting Files */,
+				C45B16C91A60C5F500B52CEA /* UIimage+Resize.swift */,
 			);
 			path = MyLocation;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				C472D19F1A5CEE1D00D0A182 /* DataModel.xcdatamodeld in Sources */,
 				C45B6F011A5A646A0056C182 /* SecondViewController.swift in Sources */,
 				C472D1A71A5E849D00D0A182 /* LocationDetailsViewController.swift in Sources */,
+				C45B16CA1A60C5F500B52CEA /* UIimage+Resize.swift in Sources */,
 				C472D19A1A5C0A5600D0A182 /* HudView.swift in Sources */,
 				C472D19C1A5CDAC300D0A182 /* Functions.swift in Sources */,
 				C472D1A51A5E2CCD00D0A182 /* LocationCell.swift in Sources */,

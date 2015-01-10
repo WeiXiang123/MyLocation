@@ -15,6 +15,7 @@ func fatalCoreDataError(error: NSError?){
     if let error = error {
         println("*** Fatal error\(error), \(error.userInfo)")
     }
+   
     NSNotificationCenter.defaultCenter().postNotificationName(MyManagedObjectContextSaveDidFailNotification, object: error)
 }
 
@@ -25,7 +26,7 @@ func fatalCoreDataError(error: NSError?){
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
+
     //core data init (common format) and connect it to an SQLite data store
     lazy var managedObjectContext: NSManagedObjectContext = {
         //folder named “DataModel.momd”

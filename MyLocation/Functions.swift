@@ -8,6 +8,7 @@
 
 import Foundation
 import Dispatch
+import UIKit
 
 func afterDelay(second:Float, closure:()->()) {
     let durationTime = Int64(second * Float(NSEC_PER_SEC))
@@ -16,3 +17,8 @@ func afterDelay(second:Float, closure:()->()) {
     dispatch_after(when, dispatch_get_main_queue(), closure)
     
 }
+
+let applicationDocumentsDirectory:String = {
+    let paths =  NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as [String]
+    return paths[0]
+}()
