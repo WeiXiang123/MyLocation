@@ -40,6 +40,9 @@ class LocationsViewController: UITableViewController {
         
         performFetch()
         navigationItem.rightBarButtonItem = editButtonItem() //this is the edit mode(delete)
+        tableView.backgroundColor = UIColor.blackColor()
+        tableView.separatorColor = UIColor(white: 1.0, alpha: 0.2)
+        tableView.indicatorStyle = UIScrollViewIndicatorStyle.White
     }
 
     // MARK: - Table view data source

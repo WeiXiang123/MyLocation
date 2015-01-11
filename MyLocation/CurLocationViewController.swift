@@ -9,6 +9,8 @@
 import UIKit
 import CoreLocation
 import CoreData
+import QuartzCore
+import AudioToolbox
 
 class CurLocationViewController: UIViewController,CLLocationManagerDelegate {
 
@@ -18,6 +20,9 @@ class CurLocationViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var tagButton: UIButton!
     @IBOutlet weak var getButton: UIButton!
+    @IBOutlet weak var latitudeTextLabel: UILabel!
+    @IBOutlet weak var longitudeTextLabel: UILabel!
+    @IBOutlet weak var containerView:UIView!
     
     let locationManager = CLLocationManager()
     var location:CLLocation?
@@ -37,6 +42,23 @@ class CurLocationViewController: UIViewController,CLLocationManagerDelegate {
     
     //coredata
     var managedObjectContext: NSManagedObjectContext!
+
+    //logo
+    var  logoVisible = false
+
+    lazy var logoButton : UIButton = {
+        let button = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        button.setBackgroundImage(UIImage(named: "Logo"), forState: UIControlState.Normal)
+        button.sizeToFit()
+        button.addTarget(self, action: Selector("getLocation"), forControlEvents: UIControlEvents.TouchUpInside)
+        button.center.x = CGRectGetMidX(self.view.bounds)
+        button.center.y = 220
+
+        return button
+    }()
+
+    //sound
+    var soundID:SystemSoundID = 0 //0 means no sound has been loaded yet.
     
     @IBAction func getLocation() {
         let authStatus:CLAuthorizationStatus = CLLocationManager.authorizationStatus()
@@ -50,7 +72,12 @@ class CurLocationViewController: UIViewController,CLLocationManagerDelegate {
             showLocationServicesDeniedAlert()
             return
         }
-        
+
+        //hide logo
+        if logoVisible {
+            hideLogoView()
+        }
+
         //"Stop" is tapped
         if updatingLocation {
             stopLoactionManager()
@@ -64,12 +91,14 @@ class CurLocationViewController: UIViewController,CLLocationManagerDelegate {
         
         updateLocationInLabel()
         configGetButton()
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateLocationInLabel()
         configGetButton()
+        loadSoundEffect("Sound.caf")
     }
 
     override func didReceiveMemoryWarning() {
@@ -140,6 +169,11 @@ class CurLocationViewController: UIViewController,CLLocationManagerDelegate {
                 self.lastGeocodingError = error
             if error == nil && !placemarks.isEmpty {
                 self.placemark = placemarks.last as? CLPlacemark
+                if self.placemark == nil {
+                    println("FIRST TIME!")
+                    self.playSoundEffect()
+                }
+
             }else {
                 self.placemark = nil
             }
@@ -178,7 +212,7 @@ class CurLocationViewController: UIViewController,CLLocationManagerDelegate {
         presentViewController(alertController, animated: true, completion: nil)
     }
     
-    private func updateLocationInLabel() {
+    func updateLocationInLabel() {
         
         if let location = self.location {
             latitudeLabel.text = String(format: "%.8f", location.coordinate.latitude)
@@ -197,13 +231,17 @@ class CurLocationViewController: UIViewController,CLLocationManagerDelegate {
             } else {
                 addressLabel.text = "No Address Found"
             }
+
+            latitudeTextLabel.hidden = false
+            longitudeTextLabel.hidden = false
         }else{
         
             latitudeLabel.text = ""
             longitudeLabel.text = ""
-            messageLabel.text = "Tap 'Get My Location' to Start"
             addressLabel.text = ""
             tagButton.hidden = true
+            messageLabel.text = ""
+
         
         //deal with error message
             var statusMessage: String
@@ -219,9 +257,13 @@ class CurLocationViewController: UIViewController,CLLocationManagerDelegate {
             } else if updatingLocation {
                 statusMessage = "Searching..."
             } else {
-                statusMessage = "Tap 'Get My Location' to Start"
+                statusMessage = ""
+                showLogoView()
             }
             messageLabel.text = statusMessage
+
+            latitudeTextLabel.hidden = true
+            longitudeTextLabel.hidden = true
         }
     }
     
@@ -251,11 +293,29 @@ class CurLocationViewController: UIViewController,CLLocationManagerDelegate {
     }
 
     private func configGetButton() {
-            if updatingLocation {
-                getButton!.setTitle("Stop", forState: UIControlState.Normal)
-            }else {
-                getButton!.setTitle("Get My Location", forState: UIControlState.Normal)
+
+        let spinnerTag = 1000
+
+        if updatingLocation {
+            getButton!.setTitle("Stop", forState: UIControlState.Normal)
+
+            if view.viewWithTag(spinnerTag) == nil {
+                let spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
+                spinner.center = messageLabel.center
+                spinner.center.y += spinner.bounds.size.height/2 + 15
+                spinner.tag = spinnerTag
+                spinner.startAnimating()
+                containerView.addSubview(spinner)
             }
+
+        }else {
+            getButton!.setTitle("Get My Location", forState: UIControlState.Normal)
+
+            if let spinner = view.viewWithTag(spinnerTag) {
+                spinner.removeFromSuperview()
+            }
+
+        }
     }
     
     /*
@@ -275,5 +335,97 @@ class CurLocationViewController: UIViewController,CLLocationManagerDelegate {
             configGetButton()
         }
     }
+
+    func showLogoView() {
+        if !logoVisible {
+            logoVisible = true
+            containerView.hidden = true
+            view.addSubview(logoButton)
+        }
+    }
+
+    func hideLogoView() {
+        if !logoVisible {
+            return
+        }
+
+        logoVisible = false
+        containerView.hidden = false
+        containerView.center.x = view.bounds.size.width * 2
+        containerView.center.y = 40 + containerView.bounds.size.height / 2
+        let centerX = CGRectGetMidX(view.bounds)
+
+        
+        let panelMover = CABasicAnimation(keyPath: "position")
+        panelMover.removedOnCompletion = false
+        panelMover.fillMode = kCAFillModeForwards
+        panelMover.duration = 0.6
+        panelMover.fromValue = NSValue(CGPoint: containerView.center)
+        panelMover.toValue = NSValue(CGPoint:CGPoint(x: centerX, y: containerView.center.y))
+        panelMover.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        panelMover.delegate = self
+        containerView.layer.addAnimation(panelMover, forKey: "panelMover")
+
+
+        let logoMover = CABasicAnimation(keyPath: "position")
+        logoMover.removedOnCompletion = false
+        logoMover.fillMode = kCAFillModeForwards
+        logoMover.duration = 0.5
+        logoMover.fromValue = NSValue(CGPoint: logoButton.center)
+        logoMover.toValue = NSValue(CGPoint:CGPoint(x: -centerX, y: logoButton.center.y))
+        logoMover.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        logoButton.layer.addAnimation(logoMover, forKey: "logoMover")
+
+        let logoRotator = CABasicAnimation(keyPath: "transform.rotation.z")
+        logoRotator.removedOnCompletion = false
+        logoRotator.fillMode = kCAFillModeForwards
+        logoRotator.duration = 0.5
+        logoRotator.fromValue = 0.0
+        logoRotator.toValue = -2 * M_PI
+        logoRotator.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+
+        logoButton.layer.addAnimation(logoRotator, forKey: "logoRotator")
+    }
+
+    override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+        containerView.layer.removeAllAnimations()
+        containerView.center.x = view.bounds.size.width / 2
+        containerView.center.y = 40 + containerView.bounds.size.height / 2
+        logoButton.layer.removeAllAnimations()
+        logoButton.removeFromSuperview()
+    }
+
+    //MARK: -Sound Effect
+    func loadSoundEffect(name: String) {
+        if let path = NSBundle.mainBundle().pathForResource(name, ofType: nil) {
+            let fileURL = NSURL.fileURLWithPath(path)
+            if fileURL == nil {
+                println("NSURL is nil for path: \(path)")
+                return
+            }
+
+            let error = AudioServicesCreateSystemSoundID(fileURL, &soundID)
+            if Int(error) != kAudioServicesNoError {
+                println("Error code \(error) loading sound at path: \(path)")
+                return
+            }
+
+        }//end of path
+    }
+
+    func unloadSoundEffect() {
+        AudioServicesDisposeSystemSoundID(soundID)
+        soundID = 0
+    }
+
+    func playSoundEffect() {
+        AudioServicesPlaySystemSound(soundID)
+    }
+
 }
+
+
+
+
+
 

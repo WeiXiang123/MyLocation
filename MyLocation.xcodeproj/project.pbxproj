@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		C45B16CA1A60C5F500B52CEA /* UIimage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45B16C91A60C5F500B52CEA /* UIimage+Resize.swift */; };
+		C45B16CC1A60EFAA00B52CEA /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45B16CB1A60EFAA00B52CEA /* MyTabBarController.swift */; };
+		C45B16CE1A60F18700B52CEA /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45B16CD1A60F18700B52CEA /* MyNavigationController.swift */; };
+		C45B16D01A60F65C00B52CEA /* MyImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45B16CF1A60F65C00B52CEA /* MyImagePickerController.swift */; };
+		C45B16D61A621CE800B52CEA /* Sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = C45B16D51A621CE800B52CEA /* Sound.caf */; };
 		C45B6EFD1A5A646A0056C182 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45B6EFC1A5A646A0056C182 /* AppDelegate.swift */; };
 		C45B6EFF1A5A646A0056C182 /* CurLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45B6EFE1A5A646A0056C182 /* CurLocationViewController.swift */; };
-		C45B6F011A5A646A0056C182 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45B6F001A5A646A0056C182 /* SecondViewController.swift */; };
 		C45B6F041A5A646A0056C182 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C45B6F021A5A646A0056C182 /* Main.storyboard */; };
 		C45B6F061A5A646A0056C182 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C45B6F051A5A646A0056C182 /* Images.xcassets */; };
-		C45B6F091A5A646A0056C182 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C45B6F071A5A646A0056C182 /* LaunchScreen.xib */; };
 		C45B6F151A5A646A0056C182 /* MyLocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45B6F141A5A646A0056C182 /* MyLocationTests.swift */; };
 		C472D1981A5BBDD500D0A182 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472D1971A5BBDD500D0A182 /* CategoryPickerViewController.swift */; };
 		C472D19A1A5C0A5600D0A182 /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472D1991A5C0A5600D0A182 /* HudView.swift */; };
@@ -39,14 +41,16 @@
 
 /* Begin PBXFileReference section */
 		C45B16C91A60C5F500B52CEA /* UIimage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIimage+Resize.swift"; sourceTree = "<group>"; };
+		C45B16CB1A60EFAA00B52CEA /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
+		C45B16CD1A60F18700B52CEA /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
+		C45B16CF1A60F65C00B52CEA /* MyImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyImagePickerController.swift; sourceTree = "<group>"; };
+		C45B16D51A621CE800B52CEA /* Sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sound.caf; sourceTree = "<group>"; };
 		C45B6EF71A5A64690056C182 /* MyLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C45B6EFB1A5A646A0056C182 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C45B6EFC1A5A646A0056C182 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C45B6EFE1A5A646A0056C182 /* CurLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurLocationViewController.swift; sourceTree = "<group>"; };
-		C45B6F001A5A646A0056C182 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		C45B6F031A5A646A0056C182 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C45B6F051A5A646A0056C182 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C45B6F081A5A646A0056C182 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C45B6F0E1A5A646A0056C182 /* MyLocationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyLocationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C45B6F131A5A646A0056C182 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C45B6F141A5A646A0056C182 /* MyLocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationTests.swift; sourceTree = "<group>"; };
@@ -81,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C45B16D41A621CE800B52CEA /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				C45B16D51A621CE800B52CEA /* Sound.caf */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
 		C45B6EEE1A5A64690056C182 = {
 			isa = PBXGroup;
 			children = (
@@ -110,14 +122,16 @@
 				C472D19B1A5CDAC300D0A182 /* Functions.swift */,
 				C472D1991A5C0A5600D0A182 /* HudView.swift */,
 				C45B6F051A5A646A0056C182 /* Images.xcassets */,
-				C45B6F071A5A646A0056C182 /* LaunchScreen.xib */,
 				C472D1A01A5D0F4D00D0A182 /* Location.swift */,
 				C472D1A41A5E2CCD00D0A182 /* LocationCell.swift */,
 				C472D1A61A5E849D00D0A182 /* LocationDetailsViewController.swift */,
 				C472D1A21A5E18AC00D0A182 /* LocationsViewController.swift */,
 				C45B6F021A5A646A0056C182 /* Main.storyboard */,
 				C472D1AA1A5F5B5E00D0A182 /* MapViewController.swift */,
-				C45B6F001A5A646A0056C182 /* SecondViewController.swift */,
+				C45B16CF1A60F65C00B52CEA /* MyImagePickerController.swift */,
+				C45B16CD1A60F18700B52CEA /* MyNavigationController.swift */,
+				C45B16CB1A60EFAA00B52CEA /* MyTabBarController.swift */,
+				C45B16D41A621CE800B52CEA /* Sound */,
 				C45B6EFA1A5A646A0056C182 /* Supporting Files */,
 				C45B16C91A60C5F500B52CEA /* UIimage+Resize.swift */,
 			);
@@ -230,7 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C45B6F041A5A646A0056C182 /* Main.storyboard in Resources */,
-				C45B6F091A5A646A0056C182 /* LaunchScreen.xib in Resources */,
+				C45B16D61A621CE800B52CEA /* Sound.caf in Resources */,
 				C45B6F061A5A646A0056C182 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,15 +265,17 @@
 			files = (
 				C472D1A31A5E18AC00D0A182 /* LocationsViewController.swift in Sources */,
 				C472D19F1A5CEE1D00D0A182 /* DataModel.xcdatamodeld in Sources */,
-				C45B6F011A5A646A0056C182 /* SecondViewController.swift in Sources */,
 				C472D1A71A5E849D00D0A182 /* LocationDetailsViewController.swift in Sources */,
 				C45B16CA1A60C5F500B52CEA /* UIimage+Resize.swift in Sources */,
 				C472D19A1A5C0A5600D0A182 /* HudView.swift in Sources */,
+				C45B16CC1A60EFAA00B52CEA /* MyTabBarController.swift in Sources */,
 				C472D19C1A5CDAC300D0A182 /* Functions.swift in Sources */,
 				C472D1A51A5E2CCD00D0A182 /* LocationCell.swift in Sources */,
 				C472D1AB1A5F5B5E00D0A182 /* MapViewController.swift in Sources */,
 				C472D1A11A5D0F4D00D0A182 /* Location.swift in Sources */,
 				C45B6EFD1A5A646A0056C182 /* AppDelegate.swift in Sources */,
+				C45B16D01A60F65C00B52CEA /* MyImagePickerController.swift in Sources */,
+				C45B16CE1A60F18700B52CEA /* MyNavigationController.swift in Sources */,
 				C472D1981A5BBDD500D0A182 /* CategoryPickerViewController.swift in Sources */,
 				C45B6EFF1A5A646A0056C182 /* CurLocationViewController.swift in Sources */,
 			);
@@ -290,14 +306,6 @@
 				C45B6F031A5A646A0056C182 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		C45B6F071A5A646A0056C182 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C45B6F081A5A646A0056C182 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -384,6 +392,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = MyLocation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -394,6 +403,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = MyLocation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

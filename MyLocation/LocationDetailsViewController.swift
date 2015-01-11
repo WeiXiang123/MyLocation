@@ -34,19 +34,21 @@ extension LocationDetailsViewController: UITextViewDelegate {
 extension LocationDetailsViewController:UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     func takePhotoWithCamera() {
-        let imagePicker = UIImagePickerController()
+        let imagePicker = MyImagePickerController()
         imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        imagePicker.view.tintColor = view.tintColor
         presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     
     func choosePhotoFromLibrary() {
-        let imagePicker = UIImagePickerController()
+        let imagePicker = MyImagePickerController()
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
+        imagePicker.view.tintColor = view.tintColor
         presentViewController(imagePicker, animated: true, completion: nil)
     }
 
@@ -249,6 +251,20 @@ class LocationDetailsViewController: UITableViewController {
 
         //add listen for the home button
         listenForBackgroudNotification()
+
+        //set color
+        tableView.backgroundColor = UIColor.blackColor()
+        tableView.separatorColor = UIColor(white: 1.0, alpha: 0.4)
+        tableView.indicatorStyle = UIScrollViewIndicatorStyle.White
+
+        descriptionTextView.backgroundColor = UIColor.blackColor()
+        descriptionTextView.textColor = UIColor.whiteColor()
+
+        addPhotoLabel.textColor = UIColor.blackColor()
+        addPhotoLabel.highlightedTextColor = UIColor.whiteColor()
+
+        addressLabel.textColor = UIColor(white: 1.0, alpha: 0.5)
+        addressLabel.highlightedTextColor = addressLabel.textColor
         
     }
     
@@ -316,7 +332,30 @@ class LocationDetailsViewController: UITableViewController {
         
         println("select\(indexPath.row)")
     }
-    
+
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = UIColor.blackColor()
+
+        if let mainLabel = cell.textLabel {
+            mainLabel.textColor = UIColor.whiteColor()
+            mainLabel.highlightedTextColor = mainLabel.textColor
+        }
+
+        if let subLabel = cell.detailTextLabel {
+            subLabel.textColor = UIColor.whiteColor()
+            subLabel.highlightedTextColor = subLabel.textColor
+        }
+
+        let selectedView = UIView(frame: CGRect.zeroRect)
+        selectedView.backgroundColor = UIColor(white: 1.0, alpha: 0.2)
+        cell.selectedBackgroundView = selectedView
+
+        if indexPath.row == 2 {
+            let addressLabel = tableView.viewWithTag(100) as UILabel
+            addressLabel.textColor = UIColor.whiteColor()
+            addressLabel.highlightedTextColor = addressLabel.textColor
+        }
+    }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "PickCategory" {
